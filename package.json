@@ -1,0 +1,21 @@
+{
+	"name": "new-mern-stack-project---wip",
+	"version": "1.0.0",
+	"description": "A New MERN Stack Project in Progress. Start Date Feb 20/2026",
+	"main": "index.js",
+	"scripts": {
+		"build": "npm install --prefix backend && npm install --prefix frontend"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/anaghasethuraman01/New-MERN-Stack-Project---WIP.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/anaghasethuraman01/New-MERN-Stack-Project---WIP/issues"
+	},
+	"homepage": "https://github.com/anaghasethuraman01/New-MERN-Stack-Project---WIP#readme"
+}
