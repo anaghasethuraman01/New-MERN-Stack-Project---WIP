@@ -11,4 +11,4 @@ A New MERN Stack Project in Progress. Start Date Feb 20/2026
 
 🚀 Completely Responsive UI
 
-🌐 Explore HTTP Methods, Status Codes & SQL vs NoSQL
+🌐  HTTP Methods, Status Codes & SQL vs NoSQL
