@@ -4,13 +4,24 @@ import notesRoutes from "./routes/notesRoutes.js";
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
 import rateLimiter from "./middleware/rateLimiter.js";
-
+import path from "path"; // for deployment
+import cors from "cors";
 dotenv.config(); // to use env files
 const app = express();
 
 const PORT = process.env.PORT || 5001;
+const __dirname = path.resolve(); // for deployment
 
 //use middleware
+// only needed in development and not in production
+if (process.env.NODE_ENV !== "production") {
+	app.use(
+		cors({
+			origin: "http://localhost:5173",
+		}),
+	);
+}
+
 app.use(express.json()); //this middleware will pares JSON bodies : req. body
 app.use(rateLimiter); // adding rateLimiter
 //our simple custom middleware - adding console.log before sending response
@@ -21,6 +32,15 @@ app.use(rateLimiter); // adding rateLimiter
 
 //routes
 app.use("/api/notes", notesRoutes);
+
+//for deployment
+// do this only in production or deployed
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "../frontend/dist"))); // serve as static assets
+	app.get("*", (req, res) => {
+		res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+	});
+}
 
 // connection to DB and only listen when database is connected
 connectDB().then(() => {
