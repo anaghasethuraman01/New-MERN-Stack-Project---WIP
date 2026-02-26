@@ -36,7 +36,9 @@ app.use("/api/notes", notesRoutes);
 //for deployment
 // do this only in production or deployed
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "../frontend/dist"))); // serve as static assets
+	app.use(express.static(path.join(__dirname, "../frontend/dist"))); // serve the react.js app as static assets
+	
+	//if they visit any route other than api/ just render the react app
 	app.get("*", (req, res) => {
 		res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
 	});
